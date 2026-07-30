@@ -44,7 +44,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint32_t adc_value_0 = 0; // Variable to store the ADC value channel 0
+float voltage_0 = 0.0; // Variable to store the converted voltage channel 0
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,6 +97,22 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    // --- 1. Start ADC Conversion ---
+    HAL_ADC_Start(&hadc1);
+
+    // --- 2. Wait for Conversion to Complete ---
+    HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+
+    // --- 3. Read the 12-bit result ---
+    adc_value_0 = HAL_ADC_GetValue(&hadc1);
+
+    // --- 4. Convert ADC value to voltage ---
+    voltage_0 = (adc_value_0 * 3.3f) / 4095.0f; // Assuming Vref = 3.3V and 12-bit ADC
+
+    // --- 5. Stop ADC Conversion ---
+    HAL_ADC_Stop(&hadc1);
+
+    HAL_Delay(50);  // Read every 50 ms
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
