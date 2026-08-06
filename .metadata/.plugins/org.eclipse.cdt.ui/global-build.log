@@ -1,4 +1,4 @@
-20:50:45 **** Incremental Build of configuration Debug for project STM32_ADC ****
+21:03:13 **** Incremental Build of configuration Debug for project STM32_ADC ****
 make -j9 all 
 arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/adc.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
@@ -8,15 +8,29 @@ Finished building target: STM32_ADC.elf
 arm-none-eabi-size  STM32_ADC.elf 
 arm-none-eabi-objdump -h -S STM32_ADC.elf  > "STM32_ADC.list"
    text	   data	    bss	    dec	    hex	filename
-   8088	     12	   1652	   9752	   2618	STM32_ADC.elf
+   8196	     12	   1660	   9868	   268c	STM32_ADC.elf
 Finished building: default.size.stdout
  
 Finished building: STM32_ADC.list
  
-20:50:55 **** Incremental Build of configuration Debug for project STM32_ADC ****
+21:03:22 **** Incremental Build of configuration Debug for project STM32_ADC ****
 make -j9 all 
 arm-none-eabi-size  STM32_ADC.elf 
    text	   data	    bss	    dec	    hex	filename
-   8088	     12	   1652	   9752	   2618	STM32_ADC.elf
+   8196	     12	   1660	   9868	   268c	STM32_ADC.elf
 Finished building: default.size.stdout
+ 
+21:05:14 **** Incremental Build of configuration Debug for project STM32_ADC ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "STM32_ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/hanieh.sabahi/Documents/repository/STM32_ADC/STM32_ADC/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_ADC.elf
+ 
+arm-none-eabi-size  STM32_ADC.elf 
+arm-none-eabi-objdump -h -S STM32_ADC.elf  > "STM32_ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   8172	     12	   1652	   9836	   266c	STM32_ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_ADC.list
  

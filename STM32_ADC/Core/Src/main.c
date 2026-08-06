@@ -102,9 +102,17 @@ int main(void)
   {
     adc_value_0 = Read_ADC_Channel(ADC_CHANNEL_0); // Read ADC channel 0
     adc_value_1 = Read_ADC_Channel(ADC_CHANNEL_1); // Read ADC channel 1
-    HAL_Delay(50);  // Read every 50 ms
+    voltage_0 = ADC_to_Voltage(adc_value_0); // Convert ADC value to voltage for channel 0
+    voltage_1 = ADC_to_Voltage(adc_value_1); // Convert ADC
+    //****the code can be written also like this
+    //voltage_0 = ADC_to_Voltage(Read_ADC_Channel(ADC_CHANNEL_0)); // Convert ADC value to voltage for channel 0
+    //voltage_1 = ADC_to_Voltage(Read_ADC_Channel(ADC_CHANNEL_1)); // Convert ADC value to voltage for channel 1
 
-    }
+    HAL_Delay(50);  // Read every 50 ms
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
 }
 
 /**

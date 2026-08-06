@@ -42,6 +42,7 @@ void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 uint32_t Read_ADC_Channel(uint32_t channel);
+float ADC_to_Voltage(uint32_t adc_value);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
