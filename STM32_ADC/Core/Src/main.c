@@ -46,6 +46,9 @@
 /* USER CODE BEGIN PV */
 uint32_t adc_value_0 = 0; // Variable to store the ADC value channel 0
 float voltage_0 = 0.0; // Variable to store the converted voltage channel 0
+uint32_t adc_value_1 = 0; // Variable to store the ADC value channel 1
+float voltage_1 = 0.0; // Variable to store the converted voltage channel 1
+ADC_ChannelConfTypeDef sConfig;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,27 +100,50 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    // --- 1. Start ADC Conversion ---
+    // --- 1. Configure ADC Channel 0 ---
+    sConfig.Channel = ADC_CHANNEL_0; // Select channel 0
+    sConfig.Rank = 1; // Set rank to 1
+    sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES; // Set sampling time
+    HAL_ADC_ConfigChannel(&hadc1, &sConfig); // Configure the channel
+
+    // --- 2. Start ADC Conversion ---
     HAL_ADC_Start(&hadc1);
 
-    // --- 2. Wait for Conversion to Complete ---
+    // --- 3. Wait for Conversion to Complete ---
     HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
 
-    // --- 3. Read the 12-bit result ---
+    // --- 4. Read the 12-bit result ---
     adc_value_0 = HAL_ADC_GetValue(&hadc1);
 
-    // --- 4. Convert ADC value to voltage ---
+    // --- 5. Convert ADC value to voltage ---
     voltage_0 = (adc_value_0 * 3.3f) / 4095.0f; // Assuming Vref = 3.3V and 12-bit ADC
-
-    // --- 5. Stop ADC Conversion ---
+    
+    // --- 6. Stop ADC Conversion ---
     HAL_ADC_Stop(&hadc1);
 
     HAL_Delay(50);  // Read every 50 ms
-    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
+        // --- 1. Configure ADC Channel 1 ---
+    sConfig.Channel = ADC_CHANNEL_1; // Select channel 1
+    sConfig.Rank = 1; // Set rank to 1
+    sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES; // Set sampling time
+    HAL_ADC_ConfigChannel(&hadc1, &sConfig); // Configure the channel
+
+    // --- 2. Start ADC Conversion ---
+    HAL_ADC_Start(&hadc1);
+
+    // --- 3. Wait for Conversion to Complete ---
+    HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+
+    // --- 4. Read the 12-bit result ---
+    adc_value_1 = HAL_ADC_GetValue(&hadc1);
+
+    // --- 5. Convert ADC value to voltage ---
+    voltage_1 = (adc_value_1 * 3.3f) / 4095.0f; // Assuming Vref = 3.3V and 12-bit ADC
+
+    // --- 6. Stop ADC Conversion ---
+    HAL_ADC_Stop(&hadc1);
+    }
 }
 
 /**
